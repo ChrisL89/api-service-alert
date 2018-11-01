@@ -1,0 +1,33 @@
+version: "2"
+
+services:
+  api-service-alert:
+    image: api-service-alert:latest
+    networks:
+    - monitoring_alert_default
+    container_name: api-service-alert
+    volumes:
+    - ./src/:/app/src/
+    - ./test/:/app/test/
+    - .eslintrc.json:/app/.eslintrc.json
+    - ./package.json:/app/package.json
+    - ${HOME}/.npmrc:/app/.npmrc
+    ports:
+    - 8080:8080
+    environment:
+      SHOW_STACK_TRACE: "true"
+      PUBLIC_URL: "localhost"
+      SERVER_PORT: 8080
+      REDIS_HOST: "redis"
+      REDIS_PORT: 6379
+      REDIS_QUEUE_NAME: "monitoringAlert"
+      REDIS_NAMESPACE: "rsmq"
+  redis:
+    image: "redis:4.0.10-alpine"
+    ports:
+    - 6379:6379
+    networks:
+    - monitoring_alert_default
+
+networks:
+  monitoring_alert_default:

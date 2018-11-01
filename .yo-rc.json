@@ -1,0 +1,9 @@
+{
+  "@tabdigital/generator-tabdigital-node": {
+    "promptValues": {
+      "authorName": "",
+      "authorEmail": "",
+      "api": true
+    }
+  }
+}

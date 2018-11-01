@@ -1,0 +1,10 @@
+.git
+*Dockerfile*
+*docker-compose*
+node_modules
+dev-seed
+.buildkite
+.eslintrc.json
+test
+node_modules
+README.md
